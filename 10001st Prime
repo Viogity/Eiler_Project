@@ -1,0 +1,47 @@
+#include <iostream>
+
+/* By listing the first six prime numbers: 2, 3, 5, 7 and 13 we can see that the 
+6th prime is 13
+What is the 10.001st prime number?*/
+
+int SimpleNumber(int x) // The function that finds prime numbers
+{
+	int value{ 2 }; // iteration number
+	int result{0}; // Prime numbers storage
+	for (int i = 1; i <= x;)
+	{
+		if (value == 2) // 2 is an exeption
+		{
+			value += 1;
+			result = value;
+			i++;
+		}
+		for (int j = value - 1; 1 < j < value; j--) // A number cannot be divisible by any number except itself and one
+		{
+			if (value % j == 0)  
+			{
+				value += 1;
+				break;
+			}
+			else if (j == 2) // End of the itteration
+			{
+				result = value;
+				value += 1;
+				i++;
+			}
+		}
+	}
+	return result;
+}
+
+int main()
+{
+	int x{0};
+	std::cin >> x;  // Here you can input the number
+	std::cout << std::endl;
+	std::cout << "Simple number: " << SimpleNumber(x) << std::endl;
+
+	return 0;
+}
+
+//The answer is 104743
